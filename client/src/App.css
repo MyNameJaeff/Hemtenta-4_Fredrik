@@ -1,0 +1,150 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+body{
+  background-color: #6f8fbe;
+}
+.div-arrow{
+  width: 25vw;
+  height: 0vh;
+  border: 2px solid white;
+}
+.Sign-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  padding: 2%;
+}
+.Sign-main > div:not(:last-child){
+  margin-bottom: 2%;
+}
+.personInfo, .weather-info, .qrcode-div {
+  display: flex;
+  align-items: center;
+  width: 35vw;
+  justify-content: space-between;
+  color: whitesmoke;
+}
+.weather{
+  background-color: whitesmoke;
+  border-radius: 25px;
+}
+.weather > div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 25px;
+  text-align: center;
+  color: black;
+}
+.weather > div h3{
+  padding: 0% 2%;
+  margin: 5% 0%;
+}
+
+.personInfo-logo{
+  border-radius: 50%;
+  height: 20vh;
+}
+
+.qrImg{
+  width: 10vw;
+  height: 10vw;
+}
+.status{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.available{
+  background-color: lightgreen;
+}
+.unavailable{
+  background-color: tomato;
+}
+
+/* Book */
+.book{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  padding: 2%;
+  color: white;
+}
+
+.book > form > div:last-child {
+  display: flex;
+  align-items: center;
+}
+
+.book > form > div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2vh;
+}
+
+.book input:not([type="submit"], [type='date'], [type='time']) {
+  margin: 2% 0%;
+  width: 20vw;
+  padding: 2%;
+  border-radius: 25px;
+  border: 2px solid black;
+  outline: none;
+}
+
+.book input[type="submit"] {
+  background-color: lightgreen;
+  border-radius: 50px;
+  border: 2px solid black;
+  padding: 3%;
+  text-align: center;
+  width: 40%;
+  font-size: 1em;
+}
+
+.book input[type="submit"]:hover {
+  background-color: rgb(94, 150, 94);
+  cursor: pointer;
+}
+
+.book input[type="submit"]:active {
+  background-color: rgb(56, 90, 56);
+}
+
+
+.book label {
+  margin-bottom: 1%;
+  border-bottom: 2px solid white;
+  width: calc(100% - 11vw);
+}
+
+.timeInputs {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.timeInputs input {
+  height: 3vh;
+  font-size: 1em;
+}
+
+.timeInputs input:nth-child(1) {
+  width: 50%;
+}
+
+.timeInputs input:nth-child(2) {
+  width: 32%;
+}
+
