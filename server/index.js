@@ -84,7 +84,7 @@ app.post("/api/book", async (req, res) => { // Books a meeting
             console.log(err);
         });
 
-    console.log("Booked a meeting");
+    console.log("Booked a meeting\n");
     res.json({ booked: true });
 });
 
@@ -105,7 +105,7 @@ app.post("/api/remove", async (req, res) => { // Removes a booking
             console.log(err);
         });
 
-    console.log("Removed a meeting");
+    console.log("Removed a meeting\n");
     res.json({ removed: true });
 });
 
@@ -132,7 +132,7 @@ app.post("/api/edit", async (req, res) => { // Edits a booking
             console.log(err);
         });
 
-    console.log("Edited a meeting");
+    console.log("Edited a meeting\n");
     res.json({ edited: true });
 });
 
@@ -157,10 +157,10 @@ app.post("/api/avaiability", async (req, res) => { // Changes the avaiability
             console.log(err);
         });
 
-    console.log("Changed avaiability");
+    console.log("Changed avaiability\n");
 });
 
 
 app.listen(PORT, () => { // Starts the server
-    console.log(`Server listening on ${PORT}`);
+    console.log(`Server listening on ${PORT}\n`);
 });
