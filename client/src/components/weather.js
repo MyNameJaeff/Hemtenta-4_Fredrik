@@ -12,6 +12,7 @@ function Weather() {
             .then((res) => res.json())
             .then((data) => setDate(data.currDate));
     }, []);
+    
     return (
         <div className="weather-info">
             <div className="weather">

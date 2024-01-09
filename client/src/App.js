@@ -21,7 +21,7 @@ function Sign() {
         <QrCode name='Bond'/>
       </div>
       <div className="status-div">
-        <Status name='Bond' status="Unavailable" />
+        <Status name='Bond'/>
       </div>
     </div>
   );

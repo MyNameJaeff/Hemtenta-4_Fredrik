@@ -53,6 +53,12 @@ const getWeather = async () => { // Returns the weather of the first result from
     }
 }
 
+function addHours(date, hours) {
+    const hoursToAdd = hours * 60 * 60 * 1000;
+    date.setTime(date.getTime() + hoursToAdd);
+    return date;
+}
+
 app.get("/api", (req, res) => { // Returns the weather and date
     let date = getDate();
     getWeather().then(data => {
@@ -60,23 +66,100 @@ app.get("/api", (req, res) => { // Returns the weather and date
     });
 });
 
-app.post("/api/book", (req, res) => { // Books a meeting
+app.post("/api/book", async (req, res) => { // Books a meeting
     const { name, email, date, time } = req.body;
     const fullDate = Date.parse(`${date} ${time}`);
-    console.log(fullDate);
-    const reformedDate = new Date(fullDate);
-    console.log(reformedDate);
-    console.log(name, email, date, time);
-    /* prisma.booking.create({
+
+    var reformedDate = new Date(fullDate);
+    reformedDate = addHours(reformedDate, 1);
+
+    await prisma.booking.create({
         data: {
             name: name,
             email: email,
-            date: date,
-            time: time
+            bookedTime: reformedDate
         }
-    }); */
-    res.json({ message: "Booked a meeting" });
+    })
+        .catch(err => {
+            console.log(err);
+        });
+
+    console.log("Booked a meeting");
+    res.json({ booked: true });
 });
+
+app.get("/api/bookings", async (req, res) => { // Returns all bookings
+    const bookings = await prisma.booking.findMany();
+    res.json(bookings);
+});
+
+app.post("/api/remove", async (req, res) => { // Removes a booking
+    let { id } = req.body;
+    id = parseInt(id);
+    await prisma.booking.delete({
+        where: {
+            id: id
+        }
+    })
+        .catch(err => {
+            console.log(err);
+        });
+
+    console.log("Removed a meeting");
+    res.json({ removed: true });
+});
+
+app.post("/api/edit", async (req, res) => { // Edits a booking
+    let { id, name, email, date, time } = req.body;
+    const fullDate = Date.parse(`${date} ${time}`);
+
+    var reformedDate = new Date(fullDate);
+    reformedDate = addHours(reformedDate, 1);
+
+    id = parseInt(id);
+
+    await prisma.booking.update({
+        where: {
+            id: id
+        },
+        data: {
+            name: name,
+            email: email,
+            bookedTime: reformedDate
+        }
+    })
+        .catch(err => {
+            console.log(err);
+        });
+
+    console.log("Edited a meeting");
+    res.json({ edited: true });
+});
+
+app.get("/api/avaiability", async (req, res) => { // Returns the avaiability of the meeting room")
+    let isAvailable = await prisma.available.findFirst();
+
+    res.json({ avaiability: isAvailable });
+});
+
+app.post("/api/avaiability", async (req, res) => { // Changes the avaiability
+    const isAvailable = req.body.isAvailable;
+
+    await prisma.available.update({
+        where: {
+            id: 1
+        },
+        data: {
+            isAvailable: isAvailable
+        }
+    })
+        .catch(err => {
+            console.log(err);
+        });
+
+    console.log("Changed avaiability");
+});
+
 
 app.listen(PORT, () => { // Starts the server
     console.log(`Server listening on ${PORT}`);

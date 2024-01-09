@@ -4,7 +4,9 @@ function Info(props) {
     return (
         <div className="personInfo">
             <div className="personInfo-image">
-                <img src={props.img} className="personInfo-logo" alt="logo" />
+                <a href="/admin" title="Go to admin page">
+                    <img src={props.img} className="personInfo-logo" alt="logo" />
+                </a>
             </div>
             <div className="personInfo-text">
                 <p>{props.name}</p>

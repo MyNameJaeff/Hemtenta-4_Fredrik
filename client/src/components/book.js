@@ -1,35 +1,52 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Book = () => {
-    const [form, setForm] = useState({
+const Book = (props) => {
+    const [form, setForm] = useState({ 
         name: '',
         email: '',
         date: '',
         time: ''
     });
 
-    const navigator = useNavigate();
-
-    const handleChange = (event) => {
-        console.log(event.target.name, event.target.value);
+    const handleChange = (event) => { // Updates the form
         setForm((prevState) => ({
             ...prevState,
             [event.target.name]: event.target.value
         }));
     }
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = async (event) => { 
         event.preventDefault();
-        console.log(form);
-        await axios.post('/api/book', form)
+        let isBooked = false;
+        await axios.get('/api/bookings') // Checks if the time is already booked
             .then(res => {
-                navigator('/');
+                console.log(res.data);
+                res.data.forEach(booking => {
+                    if ((booking.bookedTime === form.date + "T" + form.time + ":00.000Z")) {
+                        alert("This time is already booked");
+                        isBooked = true;
+                        return;
+                    }
+                });
             })
             .catch(err => {
                 console.error(err);
             });
+        if (!isBooked) { // Books the time if it's not already booked
+            await axios.post('/api/book', form) 
+                .then(res => {
+                    setForm({ // Resets the form
+                        name: '',
+                        email: '',
+                        date: '',
+                        time: ''
+                    });
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+        }
     }
 
     return (
@@ -37,17 +54,17 @@ const Book = () => {
             <form action="" method="post" onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="name">Name:</label>
-                    <input type="text" id="name" name="name" required onChange={handleChange} />
+                    <input type="text" id="name" name="name" required onChange={handleChange} value={form.name} />
                 </div>
                 <div>
                     <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" required onChange={handleChange} />
+                    <input type="email" id="email" name="email" required onChange={handleChange} value={form.email} />
                 </div>
                 <div>
                     <label htmlFor="date">Date and time:</label>
                     <div className="timeInputs">
-                        <input type="date" id="date" name="date" min={new Date().toISOString().split("T")[0]} required onChange={handleChange} />
-                        <input type="time" id="time" name="time" required onChange={handleChange} />
+                        <input type="date" id="date" name="date" min={new Date().toISOString().split("T")[0]} required onChange={handleChange} value={form.date} />
+                        <input type="time" id="time" name="time" required onChange={handleChange} step="3600" value={form.time} />
                     </div>
                 </div>
                 <div>

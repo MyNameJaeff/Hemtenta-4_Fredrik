@@ -66,10 +66,10 @@ body{
   bottom: 0;
   left: 0;
 }
-.available{
+.available, .edit{
   background-color: lightgreen;
 }
-.unavailable{
+.unavailable, .delete{
   background-color: tomato;
 }
 
@@ -78,7 +78,6 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
   padding: 2%;
   color: white;
 }
@@ -148,3 +147,61 @@ body{
   width: 32%;
 }
 
+/* Admin page styling */
+table {
+  border-collapse: separate;
+  border-spacing: 0 15px;
+}
+th {
+  background-color: #4287f5;
+  color: white;
+}
+th,
+td {
+  width: 15vw;
+  text-align: center;
+  border: 1px solid black;
+  padding: 5px;
+}
+td{
+  height: 5vh;
+  background-color: whitesmoke;
+}
+h2 {
+  color: #4287f5;
+}
+.buttons{
+  width: 10vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 6%;
+}
+.tableButton{
+  width: 40%;
+  padding: 4%;
+  border: none;
+  border-radius: 5px;
+}
+
+.admin{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2%;
+}
+.adminButtons{
+  width: 15vw;
+  display: flex;
+  justify-content: space-between;
+}
+.adminButton{
+  width: 30%;
+  padding: 2%;
+  border: none;
+  border-radius: 5px;
+}
+button:hover{
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.350);
+}

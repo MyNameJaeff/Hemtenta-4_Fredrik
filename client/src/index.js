@@ -14,8 +14,8 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route absolute path="/" element={<Sign />} />
-      <Route path="admin" element={<Admin />} />
-      <Route path="book" element={<Book />} />
+      <Route path="admin" element={<div><Book redirect="/admin"/><Admin /></div>} />
+      <Route path="book" element={<Book redirect="/"/>} />
       <Route path="*" element={<h1>404 Page Not Found! <a href='./'>Go back!</a></h1>} />
     </Routes>
   </BrowserRouter>
