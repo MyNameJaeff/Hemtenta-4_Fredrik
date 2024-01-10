@@ -72,21 +72,6 @@ function Admin() {
 
     return (
         <div className="admin">
-            {!loggedIn ? <div>
-                <h1>Login</h1>
-                <form onSubmit={handleLogin}>
-                    <div>
-                        <label htmlFor="username">Username:</label>
-                        <input type="text" id="username" name="username" required value="admin" />
-                    </div>
-                    <div>
-                        <label htmlFor="password">Password:</label>
-                        <input type="password" id="password" name="password" required value="admin" />
-                    </div>
-                    <button type="submit">Login</button>
-                </form>
-            </div> : ""}
-
             {loggedIn ? <div>
                 <h1>Admin</h1>
                 <div className="adminButtons">
@@ -114,7 +99,20 @@ function Admin() {
                         )) : "Loading..."}
                     </tbody>
                 </table>
-            </div> : ""}
+            </div> : <div>
+                <h1>Login</h1>
+                <form onSubmit={handleLogin}>
+                    <div>
+                        <label htmlFor="username">Username:</label>
+                        <input type="text" id="username" name="username" required value="admin" />
+                    </div>
+                    <div>
+                        <label htmlFor="password">Password:</label>
+                        <input type="password" id="password" name="password" required value="admin" />
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+            </div>}
         </div>
     );
 }

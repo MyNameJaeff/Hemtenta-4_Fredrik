@@ -1,18 +1,14 @@
 import React from "react";
+import CurrentDate from "./currentDate";
 
 function Weather() {
     const [weather, setWeather] = React.useState(null);
-    const [date, setDate] = React.useState(null);
-
     React.useEffect(() => {
         fetch("/api")
-            .then((res) => res.json())
-            .then((data) => setWeather(data.weather));
-        fetch("/api")
-            .then((res) => res.json())
-            .then((data) => setDate(data.currDate));
-    }, []);
-    
+          .then((res) => res.json())
+          .then((data) => setWeather(data.weather));  
+    });
+     
     return (
         <div className="weather-info">
             <div className="weather">
@@ -23,9 +19,7 @@ function Weather() {
                     <h3>{weather ? weather.wind.speed+" m/s" : "Loading..."}</h3>
                 </div>
             </div>
-            <div className="current-date">
-                <h3>{date ? date : "Loading..."}</h3>
-            </div>
+            <CurrentDate />
         </div>
     );
 }

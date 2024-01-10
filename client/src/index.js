@@ -6,6 +6,7 @@ import './index.css';
 import Sign from './App';
 import Admin from './components/admin';
 import Book from './components/book';
+import Navbar from './components/nav';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -14,8 +15,8 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route absolute path="/" element={<Sign />} />
-      <Route path="admin" element={<div><Book redirect="/admin"/><Admin /></div>} />
-      <Route path="book" element={<Book redirect="/"/>} />
+      <Route path="admin" element={<div><Navbar /><Book redirect="/admin"/><Admin /></div>} />
+      <Route path="book" element={<div><Navbar /><Book redirect="/"/></div>} />
       <Route path="*" element={<h1>404 Page Not Found! <a href='./'>Go back!</a></h1>} />
     </Routes>
   </BrowserRouter>

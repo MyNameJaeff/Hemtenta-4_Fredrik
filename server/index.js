@@ -9,7 +9,14 @@ const app = express(); // Creates the server
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-/* app.use(routes); */
+prisma.available.create({
+    data: {
+        isAvailable: true
+    }
+})
+    .catch(err => {
+        console.log(err);
+    });
 
 const getDate = () => { // Returns the date in the format: "Day, Date Month Year Week WeekNumber"
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];

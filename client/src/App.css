@@ -205,3 +205,20 @@ button:hover{
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.350);
 }
+.navbar{
+  margin-top: 1vh;
+  width: 10vw;
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar > a{
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
+}
+
+.navbar > a:hover{
+  color: rgba(255, 255, 255, 0.608);
+  text-decoration: underline;
+}
