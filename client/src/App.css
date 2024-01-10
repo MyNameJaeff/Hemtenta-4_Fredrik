@@ -18,16 +18,32 @@ body{
   align-items: center;
   height: 100vh;
   padding: 2%;
+  font-weight: bold;
 }
 .Sign-main > div:not(:last-child){
   margin-bottom: 2%;
 }
-.personInfo, .weather-info, .qrcode-div {
+
+.qrcode-div, .personInfo, .weather-div{
+  width: 40vw;
+}
+.qrcode-div, .personInfo, .weather-div {
   display: flex;
   align-items: center;
-  width: 35vw;
   justify-content: space-between;
   color: whitesmoke;
+}
+.personInfo{
+  font-size: 1.5em;
+}
+.current-date{
+  font-size: 1.4em;
+}
+.qrcode-div{
+  font-size: 1.1em;
+}
+.qrcode-div > h3{
+  margin-left: 2vw;
 }
 .weather{
   background-color: whitesmoke;

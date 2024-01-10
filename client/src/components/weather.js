@@ -10,7 +10,7 @@ function Weather() {
     });
      
     return (
-        <div className="weather-info">
+        <div className="weather-div">
             <div className="weather">
                 <div>
                     <h3>{weather ?  weather.name : "Loading..."}</h3>
