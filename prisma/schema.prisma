@@ -27,3 +27,9 @@ model Available {
   
   isAvailable Boolean @default(true)
 }
+
+model AvailableTimes {
+  id          Int     @id  @default(autoincrement())
+  
+  time        DateTime @unique
+}

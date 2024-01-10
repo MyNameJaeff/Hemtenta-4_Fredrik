@@ -93,7 +93,7 @@ body{
   margin-bottom: 2vh;
 }
 
-.book input:not([type="submit"], [type='date'], [type='time']) {
+.book input:not([type="submit"], [type='date'], [type='time'], [list]) {
   margin: 2% 0%;
   width: 20vw;
   padding: 2%;
@@ -221,4 +221,43 @@ button:hover{
 .navbar > a:hover{
   color: rgba(255, 255, 255, 0.608);
   text-decoration: underline;
+}
+
+.available-times{
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  font-size: 1.2em;
+}
+.available-times > h3 {
+  padding: 0% 2%;
+  margin-bottom: 0.5em;
+  border-bottom: 2px solid white;
+}
+.available-times > ul {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+}
+.available-times > ul > li {
+  margin-bottom: 1em;
+  padding: 0.1% 2%;; 
+  border-bottom: 1px solid black;
+}
+
+.add-time-form > form {
+  width: 15%;
+}
+
+.add-time-form > form input {
+  padding: 2%;
+  font-size: 1em;
+}
+
+.add-time-form > form input[type="time"] {
+  width: 35%;
 }
