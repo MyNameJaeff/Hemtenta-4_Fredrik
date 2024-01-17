@@ -1,4 +1,4 @@
-# Hemtenta-4_Fredrik
+# Information_display_screen
 This was a project during year 4 at NTI Södertörn where we were tasked to create a website to display information for our teacher on a screen outside his office
 
 ## Requirements
